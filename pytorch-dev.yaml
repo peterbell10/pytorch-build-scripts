@@ -1,0 +1,38 @@
+
+name: pytorch-dev
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia/labels/cuda-11.8.0
+dependencies:
+  - python=3.8
+  - numpy
+  - ninja
+  - pyyaml
+  - mkl
+  - mkl-include
+  - setuptools
+  - cmake
+  - cffi
+  - typing
+  - pip
+  - pytest
+  - pytest-sugar
+  - pytest-xdist
+  - typing_extensions
+  - hypothesis
+  - scipy
+  - pandas
+  - pytorch::magma-cuda117
+  - ipython
+  - cudnn>=8
+  - ccache
+  - gcc=9
+  - gxx=9
+  - conda-forge::sysroot_linux-64>=2.17
+  - cuda-toolkit
+  - cuda-nvcc
+  - cuda-gdb
+  - pip:
+    - lintrunner
+    - expecttest
