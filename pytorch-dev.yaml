@@ -3,7 +3,7 @@ name: pytorch-dev
 channels:
   - conda-forge
   - pytorch
-  - nvidia/labels/cuda-11.8.0
+  - nvidia/label/cuda-11.8.0
 dependencies:
   - python=3.8
   - numpy
@@ -16,14 +16,16 @@ dependencies:
   - cffi
   - typing
   - pip
+  - psutil
   - pytest
   - pytest-sugar
   - pytest-xdist
   - typing_extensions
   - hypothesis
   - scipy
+  - scikit-build
   - pandas
-  - pytorch::magma-cuda117
+  - pytorch::magma-cuda118
   - ipython
   - cudnn>=8
   - ccache
@@ -36,3 +38,4 @@ dependencies:
   - pip:
     - lintrunner
     - expecttest
+    - ghstack
