@@ -9,3 +9,4 @@ source ~/git/torch-common.sh
 
 pip uninstall torch -y
 python setup.py develop $@
+make triton
