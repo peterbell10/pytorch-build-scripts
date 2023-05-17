@@ -6,8 +6,7 @@ conda activate pytorch-dev
 cd ~/git/pytorch
 
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source $SCRIPT_DIR/torch-common.sh
+source ./torch-common.sh
 
 pip uninstall torch -y
 python setup.py develop $@

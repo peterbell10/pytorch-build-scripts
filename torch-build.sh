@@ -1,9 +1,8 @@
 #!/bin/bash
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-bash $SCRIPT_DIR/pytorch-build.sh
+bash ./pytorch-build.sh
 
-source $SCRIPT_DIR/torch-common.sh
+source ./torch-common.sh
 
 pip uninstall -y functorch torchvision torchtext torchaudio torchdata
 
