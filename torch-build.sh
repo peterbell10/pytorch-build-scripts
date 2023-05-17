@@ -1,14 +1,17 @@
 #!/bin/bash
 
-cd ~/git
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+bash $SCRIPT_DIR/pytorch-build.sh
 
-source torch-common.sh
-pip uninstall -y torch functorch torchvision torchtext torchaudio torchdata
+source $SCRIPT_DIR/torch-common.sh
+
+pip uninstall -y functorch torchvision torchtext torchaudio torchdata
 
 export BUILD_SOX=0
-rm -rf ~/git/torch-vision/build
 
-(cd pytorch && python setup.py develop)
+cd ~/git/
+rm -rf torch-vision/build
+
 (cd torch-data && python setup.py install)
 (cd torch-text && python setup.py install)
 (cd torch-vision && python setup.py install)
