@@ -1,5 +1,5 @@
 #!/bin/bash
-PKGS=(pytorch data vision text audio benchmark)
+PKGS=(pytorch torch-data torch-vision torch-text torch-audio torch-benchmark)
 
 cd ~/git
 for pkg in ${PKGS[@]}; do
@@ -10,11 +10,11 @@ for pkg in ${PKGS[@]}; do
 done
 
 for pkg in ${PKGS[@]}; do
-  cd ${pkg}
+  pushd ${pkg}
   git fetch origin
   git checkout main
   git rebase origin/main
   git submodule update --init --recursive --jobs 0
   git prune
-  cd ..
+  popd
 done

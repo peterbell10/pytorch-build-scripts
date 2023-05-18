@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # General compilation
 export MAX_JOBS=${MAX_JOBS:-95}
 export CMAKE_BUILD_TYPE=Release

@@ -1,8 +1,9 @@
 #!/bin/bash
+set -e
 
-bash ./pytorch-build.sh
-
-source ./torch-common.sh
+# conda and the env vars are set correctly in pytorch-build.py
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $SCRIPT_DIR/pytorch-build.sh $@
 
 pip uninstall -y functorch torchvision torchtext torchaudio torchdata
 
