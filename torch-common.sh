@@ -1,5 +1,16 @@
-# General compilation
-export MAX_JOBS=${MAX_JOBS:-95}
+# Cores used during compilation
+# Use this logic, or simpyl set the JOBS variable manually
+# If you're sharing a box, be mindful of not choking the computer during compilation
+CORES_PER_SOCKET=`lscpu | grep 'Core(s) per socket' | awk '{print $NF}'`
+NUMBER_OF_SOCKETS=`lscpu | grep 'Socket(s)' | awk '{print $NF}'`
+export NCORES=$((CORES_PER_SOCKET * NUMBER_OF_SOCKETS))
+# If hyperthreading is on, we use all the cores, otherwise, we leave a core unused to not choke the computer
+THREADS_PER_CORE=`lscpu | grep 'Thread(s) per core' | awk '{print $NF}'`
+if ((THREADS_PER_CORE > 1)); then JOBS=$NCORES; else JOBS=$((NCORES - 1)); fi
+export MAX_JOBS=${MAX_JOBS:-$JOBS}
+
+
+# Compilation type
 export CMAKE_BUILD_TYPE=Release
 # CMAKE_BUILD_TYPE=RelWithDebInfo gives you line numbers on gdb,
 # but makes the symbol loading phase in gdb and the linking phase in compilation much slower.
