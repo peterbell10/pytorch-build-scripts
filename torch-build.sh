@@ -20,5 +20,5 @@ for pkg in ${PKGS[@]}; do
   popd
 done
 
-cd torch-benchmark
+pushd torch-benchmark
 python install.py

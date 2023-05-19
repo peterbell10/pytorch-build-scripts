@@ -4,7 +4,7 @@
 CORES_PER_SOCKET=`lscpu | grep 'Core(s) per socket' | awk '{print $NF}'`
 NUMBER_OF_SOCKETS=`lscpu | grep 'Socket(s)' | awk '{print $NF}'`
 export NCORES=$((CORES_PER_SOCKET * NUMBER_OF_SOCKETS))
-# If hyperthreading is on, we use all the cores, otherwise, we leave a core unused to not choke the computer
+# If hyperthreading is on, we use all the cores, otherwise, we leave a core unused to avoid choking the box
 THREADS_PER_CORE=`lscpu | grep 'Thread(s) per core' | awk '{print $NF}'`
 if ((THREADS_PER_CORE > 1)); then JOBS=$NCORES; else JOBS=$((NCORES - 1)); fi
 export MAX_JOBS=${MAX_JOBS:-$JOBS}
