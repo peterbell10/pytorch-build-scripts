@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 PKGS=(data vision text audio benchmark)
 
 mkdir -p ~/git

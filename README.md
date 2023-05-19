@@ -6,12 +6,12 @@ If you want to go the extra mile, you can install gcc-9, g++-9, as these are the
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
 sudo apt install gcc-9 g++-9
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/cc cc /usr/bin/gcc-9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/cc cc /usr/bin/gcc-9 --slave /usr/bin/c++ c++ /usr/bin/g++-9
 ```
 
-Install the nvidia drivers from https://www.nvidia.com/download/index.aspx
+Install the Nvidia drivers from https://www.nvidia.com/download/index.aspx
 
-Then create the conda env
+Then create the conda environment
 ```bash
 conda env create -f pytorch-dev.yaml
 ```

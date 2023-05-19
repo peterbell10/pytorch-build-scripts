@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 PKGS=(pytorch torch-data torch-vision torch-text torch-audio torch-benchmark)
 
 cd ~/git
