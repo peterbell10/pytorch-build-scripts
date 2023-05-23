@@ -1,7 +1,7 @@
 # Compiling PyTorch
 
 If you don't have gcc, g++, install them from apt-get.
-If you want to go the extra mile, you can install gcc-9, g++-9, as these are the ones that are the versions used in CI (as of this writing). For example, I did
+If you want to go the extra mile, you can install gcc-9, g++-9, as this is the minimum required version. For example, I did
 ```bash
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
@@ -15,10 +15,15 @@ Then create the conda environment
 ```bash
 conda env create -f pytorch-dev.yaml
 ```
+We also set python=3.8 in `pytorch-dev.yaml`, as this is the minimum required version in PyTorch, and this disallows us from using features that are "too new".
 
-Have a read through `torch-build.sh` and `pytorch-build.sh` and change them as desired.
+Have a read through the `pytorch-*` and `torch-*` scripts and change them as needed.
+
 Finally, running `torch-clone.sh` and `torch-build.sh` should give you a working torchbench installation.
-If you are just working on PyTorch, probably `pytorch-build.sh` is what you want.
+
+The folder structure is defined in `torch-clone.py` and is given by `~/git/{pytorch,torch-audio,torch-benchmark,torch-data,torch-text,torch-vision}`.
+
+If you are just working on PyTorch, you probably won't need `torch-build.sh` but simply `pytorch-build.sh`.
 
 
 # Running torchbench
