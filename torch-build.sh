@@ -7,7 +7,7 @@ source $SCRIPT_DIR/pytorch-build.sh $@
 
 pip uninstall -y torchvision torchtext torchaudio torchdata torchbenchmark
 
-PKGS=(data vision text audio benchmark)
+PKGS=(data vision text audio)
 
 export BUILD_SOX=0
 
