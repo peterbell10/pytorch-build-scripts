@@ -1,16 +1,24 @@
 #!/bin/bash
+set -e
 
-cd ~/git
+# conda and the env vars are set correctly in pytorch-build.py
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $SCRIPT_DIR/pytorch-build.sh $@
 
-source torch-common.sh
-pip uninstall -y torch functorch torchvision torchtext torchaudio torchdata
+pip uninstall -y torchvision torchtext torchaudio torchdata torchbenchmark
+
+PKGS=(data vision text audio)
 
 export BUILD_SOX=0
-rm -rf ~/git/torch-vision/build
 
-(cd pytorch && python setup.py develop)
-(cd torch-data && python setup.py install)
-(cd torch-text && python setup.py install)
-(cd torch-vision && python setup.py install)
-(cd torch-audio && python setup.py install)
-#pip install -e ./huggingface_transformers --no-build-isolation
+cd ~/git/
+rm -rf torch-vision/build
+
+for pkg in ${PKGS[@]}; do
+  pushd "torch-${pkg}"
+  python setup.py install
+  popd
+done
+
+pushd torch-benchmark
+python install.py

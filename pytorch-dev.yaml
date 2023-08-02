@@ -1,4 +1,3 @@
-
 name: pytorch-dev
 channels:
   - conda-forge
@@ -25,16 +24,19 @@ dependencies:
   - scipy
   - scikit-build
   - pandas
-  - pytorch::magma-cuda118
   - ipython
-  - cudnn>=8
   - ccache
-  - gcc=9
-  - gxx=9
-  - conda-forge::sysroot_linux-64>=2.17
-  - cuda-toolkit
+  - sysroot_linux-64>=2.17
+  # cuda stuff
+  - pytorch::magma-cuda118
+  - conda-forge::cuda-version=11.8
+  - conda-forge::cudnn
+  - cuda-libraries-dev
   - cuda-nvcc
   - cuda-gdb
+  - cuda-nvtx
+  - cuda-nvml-dev
+  - cuda-cupti
   - pip:
     - lintrunner
     - expecttest
